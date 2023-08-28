@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+:root{
+    --bg-color: #252A34;
+    --primary-color: #EAEAEA;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    user-select: none;
+    font-family: 'Comfortaa', cursive;
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+}
+
+main{
+    display: grid;
+    grid-template-columns: 100%;
+    justify-items: center;
+    width: 50%;
+    min-width: 450px;
+    text-align: center;
+}
+
+h1{
+    font-size: 48pt;
+    padding: 16px;
+}
+
+#game{
+    width: 50%;
+    min-width: 450px;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+}
+
+#game>*{
+    font-size: 100pt;
+    background-color: #1c1f25;
+    padding: 0;
+    margin: 5px;
+    height: 140px;
+    line-height: 140px;
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#game>*:hover{
+    cursor: pointer;
+    background-color: #313846;
+}
