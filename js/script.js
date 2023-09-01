@@ -15,9 +15,23 @@ for(let y = 0; y < 3; y++){
 const fields = [... game.children];
 
 let player = 'x';
+let plays = 0;
+
 const playerSwap = () => player = player == 'x'? 'o' : 'x'; 
 
-const win = (player) => alert(player + ' é o vencedor!');
+const reset = () => {
+    plays = 0;
+    playerSwap();
+    fields.map(field => field.innerHTML = "");
+}
+const win = (player) => {
+    alert(player + ' é o vencedor!');
+    reset();
+}
+const tie = () => {
+    alert('empate!');
+    reset();
+}
 
 //Check Win Logic
 const checkWin = () => {
@@ -67,6 +81,9 @@ const checkWin = () => {
             }
         }
     }
+    
+    plays++;
+    if(plays == 9) return tie();
 }
 
 //Play Logic
