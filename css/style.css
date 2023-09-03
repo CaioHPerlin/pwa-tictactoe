@@ -24,7 +24,7 @@ main{
     grid-template-columns: 100%;
     justify-items: center;
     width: 50%;
-    min-width: 450px;
+    min-width: 350px;
     text-align: center;
 }
 
@@ -33,20 +33,26 @@ h1{
     padding: 16px;
 }
 
+#player{
+    display: inline-flex;
+    width: 50px;
+    text-align: center;
+    font-size: 58pt;
+}
+
 #game{
-    width: 50%;
-    min-width: 450px;
+    width: 350px;
     display: grid;
     grid-template-columns: 33% 33% 33%;
 }
 
 #game>*{
-    font-size: 100pt;
+    font-size: 72pt;
     background-color: #1c1f25;
     padding: 0;
     margin: 5px;
-    height: 140px;
-    line-height: 140px;
+    height: 100px;
+    line-height: 100px;
     box-sizing: border-box;
     text-align: center;
     vertical-align: middle;
@@ -55,4 +61,16 @@ h1{
 #game>*:hover{
     cursor: pointer;
     background-color: #313846;
+}
+
+#updates{
+    display: none;
+    text-align: center;
+    background-color: #1c1f25;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+#updates>*{
+    padding: 8px 0px;
 }

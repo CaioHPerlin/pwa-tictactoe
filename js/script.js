@@ -5,6 +5,12 @@ window.onload = () => {
     }
 }
 
+const playerOutput = document.getElementById('player');
+const updatePlayer = () => {
+    playerOutput.innerHTML = player;
+    playerOutput.style.color = player == 'x'? '#FF2E63' : '#07edea'
+}
+
 const game = document.getElementById('game');
 for(let y = 0; y < 3; y++){
     for(let x = 0; x < 3; x++){
@@ -16,20 +22,36 @@ const fields = [... game.children];
 
 let player = 'x';
 let plays = 0;
+updatePlayer();
 
-const playerSwap = () => player = player == 'x'? 'o' : 'x'; 
-
+const playerSwap = () => {
+    player = player == 'x'? 'o' : 'x';
+    updatePlayer();
+}
+    
 const reset = () => {
+    player = 'x';
+    updatePlayer();
     plays = 0;
-    playerSwap();
     fields.map(field => field.innerHTML = "");
 }
+
+const logOutput = document.getElementById('updates');
+
+const log = (message) => {
+    const node = document.createElement('h2');
+    node.innerHTML = message;
+    logOutput.style.display = 'block'
+    logOutput.insertBefore(node, logOutput.firstChild);
+}
+
 const win = (player) => {
-    alert(player + ' é o vencedor!');
+    log(`${player} ganhou a partida!`)
     reset();
 }
+
 const tie = () => {
-    alert('empate!');
+    log('empate!')
     reset();
 }
 
@@ -60,7 +82,6 @@ const checkWin = () => {
             }
         }
     }
-
     //Diagonals
     const f4 = fields[4].innerHTML;
 
@@ -81,7 +102,7 @@ const checkWin = () => {
             }
         }
     }
-    
+    //Tie Check
     plays++;
     if(plays == 9) return tie();
 }
@@ -91,6 +112,7 @@ fields.map(field => {
     field.addEventListener('click', () => {
         if(field.innerHTML == ''){
             field.innerHTML = player;
+            field.style.color = player == 'x'? '#FF2E63' : '#07edea'
             playerSwap();
             checkWin();
         }
