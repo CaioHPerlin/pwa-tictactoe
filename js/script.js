@@ -30,8 +30,6 @@ const playerSwap = () => {
 }
     
 const reset = () => {
-    player = 'x';
-    updatePlayer();
     plays = 0;
     fields.map(field => field.innerHTML = "");
 }
@@ -45,12 +43,25 @@ const log = (message) => {
     logOutput.insertBefore(node, logOutput.firstChild);
 }
 
+JsConfetti = new JSConfetti();
+
 const win = (player) => {
+    const winColor = player == 'x'? '#FF2E63' : '#07edea'
+    JsConfetti.addConfetti({
+        confettiColors: [winColor],
+        confettiRadius: 6,
+        confettiNumber: 100
+    })
     log(`${player} ganhou a partida!`)
     reset();
 }
 
 const tie = () => {
+    JsConfetti.addConfetti({
+    confettiColors: ['#6e6e6e'],
+    confettiRadius: 4,
+    confettiNumber: 100
+})
     log('empate!')
     reset();
 }
